@@ -12,13 +12,13 @@ int main()
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
     std::vector<GravitySource> sources;
-    sources.emplace_back(700, 400, 158800);
+    sources.emplace_back(700, 400, SOURCE_MASS);
 
     std::vector<Particle> particles;
-    particles.emplace_back(700, 600, 80, 30, 5.98);
-    particles.emplace_back(500, 350, 20, 60, 5.98);
-    particles.emplace_back(500, 350, 0, 80, 5.98);
-    particles.emplace_back(700, 200, -70, 30, 5.98);
+    particles.emplace_back(700, 600, 80, 30, PARTICLE_MASS);
+    particles.emplace_back(500, 350, 20, 60, PARTICLE_MASS);
+    particles.emplace_back(500, 350, 0, 80, PARTICLE_MASS);
+    particles.emplace_back(700, 200, -70, 30, PARTICLE_MASS);
 
     for (const auto &i : sources)
     {
@@ -55,7 +55,7 @@ int main()
 
         window.display();
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(TIME_STEP/4));
+        std::this_thread::sleep_for(std::chrono::milliseconds(TIME_STEP / 5)); // divide by 5 to speed up the visualization
     }
 
     return 0;

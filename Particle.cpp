@@ -26,10 +26,10 @@ Particle::Particle(double pos_x, double pos_y, double vel_x, double vel_y, doubl
 void Particle::updatePos(std::vector<GravitySource> &sources, sf::RenderWindow &window)
 {
     force = {0, 0};
+
     for (const auto &i : sources)
     {
         force += gravForce(i);
-        std::cout << force(0) << " " << force(1) << "";
     }
 
     Eigen::Vector2d acc{force / mass};
@@ -39,8 +39,6 @@ void Particle::updatePos(std::vector<GravitySource> &sources, sf::RenderWindow &
     pos += vel * (TIME_STEP / 1000.0);
 
     point.setPosition(pos(0), pos(1));
-
-    std::cout << "    X:" << pos(0) << " Y:" << pos(1) << "\n";
 
     window.draw(point);
 }
